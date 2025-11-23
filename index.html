@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Botanix | Modern AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'Hind Siliguri', 'sans-serif'],
+              bangla: ['Hind Siliguri', 'sans-serif'],
+            },
+            colors: {
+              nature: {
+                50: '#f0fdf4', // Mint White
+                100: '#dcfce7', // Pale Green
+                200: '#bbf7d0',
+                300: '#86efac',
+                500: '#22c55e', // Vibrant Green
+                600: '#16a34a', 
+                800: '#166534', // Deep Green
+                900: '#14532d',
+                dark: '#022c22',
+              },
+              accent: {
+                light: '#2dd4bf', // Teal
+                DEFAULT: '#0d9488',
+                dark: '#115e59',
+              }
+            },
+            boxShadow: {
+              'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+              'glow': '0 0 20px rgba(34, 197, 94, 0.5)',
+            },
+            animation: {
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'slide-up': 'slideUp 0.5s ease-out forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              scan: {
+                '0%': { top: '0%' },
+                '50%': { top: '100%' },
+                '100%': { top: '0%' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        color: #022c22;
+        -webkit-font-smoothing: antialiased;
+      }
+      
+      /* Glassmorphism Utilities */
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      
+      .glass-dark {
+        background: rgba(2, 44, 34, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #bbf7d0; 
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #22c55e; 
+      }
+
+      /* Tool Grid */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      @media print {
+        @page { margin: 1cm; size: auto; }
+        
+        html, body {
+          height: auto !important;
+          overflow: visible !important;
+          background: white !important;
+          color: black !important;
+        }
+
+        #root {
+          display: block !important;
+        }
+        
+        /* Hide Navigation and Buttons */
+        nav, button, .fixed, .no-print, .print\:hidden { 
+          display: none !important; 
+        }
+
+        /* Reset Layout containers */
+        .min-h-screen { min-height: 0 !important; }
+        .pb-32 { padding-bottom: 0 !important; }
+        
+        /* Reset Glass Effects */
+        .glass, .glass-dark, .bg-white\/80 { 
+          background: none !important; 
+          box-shadow: none !important; 
+          border: 1px solid #ddd !important;
+          backdrop-filter: none !important;
+        }
+        
+        /* Grid Layout Fixes */
+        .grid {
+          display: block !important;
+        }
+        .grid > div {
+          margin-bottom: 1.5rem;
+          page-break-inside: avoid;
+        }
+
+        /* Typography */
+        * {
+          text-shadow: none !important;
+          color: black !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        
+        /* Images */
+        img {
+          max-width: 100% !important;
+          page-break-inside: avoid;
+        }
+
+        /* Specific visibility */
+        .print\:block { display: block !important; }
+        .print\:static { position: static !important; }
+        .print\:text-black { color: black !important; }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
